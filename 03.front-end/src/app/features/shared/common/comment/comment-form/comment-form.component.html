@@ -1,0 +1,21 @@
+<div id="send-a-comment"></div>
+
+<form class="comment-form inline-items" [formGroup]="commentForm" (ngSubmit)="submitComment(userId, postId)">
+
+  <div class="post__author author vcard inline-items">
+    <img
+      src="{{avatar? avatar : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0hxwLk9WbtPyfItymvpJ3fA7m13KIYF3sKDOy_YAXMqx2ZKRdwWDayxvScLqYNi7XsNg&usqp=CAU'}}"
+      alt="author">
+
+    <div class="form-group with-icon-right ">
+      <textarea class="form-control" placeholder="" formControlName="content"></textarea>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-md-2 btn-primary">Post Comment</button>
+
+  <button class="btn btn-md-2 btn-border-think c-grey btn-transparent custom-color">Cancel</button>
+
+</form>
+
+

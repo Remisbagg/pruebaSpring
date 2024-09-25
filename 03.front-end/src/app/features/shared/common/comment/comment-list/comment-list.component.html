@@ -1,0 +1,40 @@
+<ul class="comments-list" *ngFor="let c of slicedComments">
+  <li class="comment-item">
+    <div class="post__author author vcard inline-items">
+      <img
+        src="{{c.user.avatarUrl != null? c.user.avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0hxwLk9WbtPyfItymvpJ3fA7m13KIYF3sKDOy_YAXMqx2ZKRdwWDayxvScLqYNi7XsNg&usqp=CAU'}}"
+        alt="author">
+
+      <div class="author-date">
+        <a class="h6 post__author-name fn" href="02-ProfilePage.html">
+          {{(c.user.firstName + " " + c.user?.lastName) == " "? (c.user.firstName + " " + c.user.lastName): c.user.email }}
+        </a>
+        <div class="post__date">
+          <time class="published" datetime="2004-07-24T18:18">
+            {{ c.createdTime | timeAgo }}
+          </time>
+        </div>
+      </div>
+
+      <a href="#" class="more">
+        <svg class="olymp-three-dots-icon">
+          <use xlink:href="assets/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
+        </svg>
+      </a>
+
+    </div>
+
+    <p>{{ c.content }}</p>
+
+    <!--Show likes of comment-->
+
+    <!--        <a href="#" class="post-add-icon inline-items">-->
+    <!--          <svg class="olymp-heart-icon"><use xlink:href="assets/svg-icons/sprites/icons.svg#olymp-heart-icon"></use></svg>-->
+    <!--          <span>3</span>-->
+    <!--        </a>-->
+    <a href="#send-a-comment" class="reply">Reply</a>
+  </li>
+</ul>
+
+    <a *ngIf="comments.length != slicedComments.length" href="javascript:void(0)" class="more-comments" (click)="loadMoreComments()">View more comments <span>+</span></a>
+

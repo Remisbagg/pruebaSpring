@@ -1,0 +1,73 @@
+<div class="post-additional-info inline-items">
+
+  <a href="javascript:void(0)" class="post-add-icon inline-items" (click)="reactPost(postUserId, postId)">
+    <svg [ngStyle]="{'fill': checkLiked(post.likes)? '#ff763a': ''}"
+         class="olymp-heart-icon">
+      <use xlink:href="assets/svg-icons/sprites/icons.svg#olymp-heart-icon"></use>
+    </svg>
+    <span>{{ post.likes.length }}</span>
+  </a>
+
+  <div *ngIf="post.likes.length != 0">
+    <div *ngIf="post.likes.length <= 5">
+      <ul class="friends-harmonic">
+        <li *ngFor="let l of post?.likes">
+          <a href="#">
+            <img
+              src="{{l?.avatarUrl? l.avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0hxwLk9WbtPyfItymvpJ3fA7m13KIYF3sKDOy_YAXMqx2ZKRdwWDayxvScLqYNi7XsNg&usqp=CAU'}}"
+              alt="friend">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="post.likes.length > 5">
+      <ul class="friends-harmonic">
+        <li *ngFor="let l of post?.likes">
+          <a href="#">
+            <img
+              src="{{l?.avatarUrl? l.avatarUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0hxwLk9WbtPyfItymvpJ3fA7m13KIYF3sKDOy_YAXMqx2ZKRdwWDayxvScLqYNi7XsNg&usqp=CAU'}}"
+              alt="friend">
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="assets/img/friend-harmonic11.jpg" alt="friend">
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="post.likes.length ==1 && checkLiked(post.likes)">
+      <div class="names-people-likes">
+        <a href="javascript:void(0)">You</a> liked this
+      </div>
+    </div>
+
+    <div *ngIf="post.likes.length ==1 && !checkLiked(post.likes)">
+      <div class="names-people-likes">
+        <a href="javascript:void(0)">{{post?.likes[0].email}}</a> liked this
+      </div>
+    </div>
+
+    <div *ngIf="post.likes.length >1 && checkLiked(post.likes)">
+      <div class="names-people-likes">
+        <a href="javascript:void(0)">You</a> and {{post.likes.length-1}} others liked this
+      </div>
+    </div>
+
+    <div *ngIf="post.likes.length >1 && !checkLiked(post.likes)">
+      <div class="names-people-likes">
+        <a href="javascript:void(0)">{{post.likes.length}} people liked this </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="comments-shared">
+    <a href="javascript:void(0)" class="post-add-icon inline-items">
+      <svg class="olymp-speech-balloon-icon">
+        <use xlink:href="assets/svg-icons/sprites/icons.svg#olymp-speech-balloon-icon"></use>
+      </svg>
+      <span>{{ post.comments.length }}</span>
+    </a>
+  </div>
+</div>

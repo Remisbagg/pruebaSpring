@@ -1,0 +1,28 @@
+.author-thumb {
+  display: inline-block;
+  position: relative;
+}
+
+.author-thumb img {
+  border-radius: 100%;
+  overflow: hidden;
+  max-width: unset;
+  display: block;
+  width: 40px;
+  height: 40px;
+  /*border-radius: 100%;*/
+  /*overflow: hidden;*/
+  /*margin-right: 12px;*/
+  /*margin-left: 30px;*/
+  /*margin-top: 5px;*/
+}
+
+.author-thumb .icon-status {
+  position: absolute;
+  margin-right: 0;
+  top: 0;
+  left: 0;
+  border: 1px solid #3f4257;
+  width: 8px;
+  height: 8px;
+}

@@ -1,0 +1,89 @@
+<div id="newsfeed-items-grid" *ngFor="let p of posts">
+  <div class="ui-block">
+
+
+    <article class="hentry post">
+
+      <div class="post__author author vcard inline-items">
+        <img
+          src="{{p.userAvatar?p.userAvatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0hxwLk9WbtPyfItymvpJ3fA7m13KIYF3sKDOy_YAXMqx2ZKRdwWDayxvScLqYNi7XsNg&usqp=CAU'}}"
+          alt="author">
+
+        <div class="author-date">
+          <a class="h6 post__author-name fn" href="#">
+            {{(p.userFirstname != null && p.userLastname != null) ? (p.userFirstname + " " + p.userLastname).trim() : p.userEmail }}
+          </a>
+          <div class="post__date">
+            <time class="published" datetime="2004-07-24T18:18">
+              {{ p.createdTime | timeAgo }}
+            </time>
+          </div>
+        </div>
+
+        <div class="more">
+          <svg class="olymp-three-dots-icon">
+            <use xlink:href="assets/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use>
+          </svg>
+          <ul class="more-dropdown">
+            <li>
+              <a href="#">Hide Post</a>
+            </li>
+            <li>
+              <a href="#">Turn Off Notifications</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p *ngIf="p.content">{{ p.content }}</p>
+
+      <div *ngIf="p.images.length != 0">
+        <app-post-images [images]="p.images"></app-post-images>
+      </div>
+
+      <app-post-additional-info [userId]="userId"
+                                [postUserId]="p.userId"
+                                [postId]="p.postId"
+                                [post]="p"
+                                (postLike)="getNewsfeed()"
+      ></app-post-additional-info>
+
+      <div class="control-block-button post-control-button">
+
+        <a href="#" class="btn btn-control">
+          <svg class="olymp-like-post-icon">
+            <use xlink:href="assets/svg-icons/sprites/icons.svg#olymp-like-post-icon"></use>
+          </svg>
+        </a>
+
+        <a href="#" class="btn btn-control">
+          <svg class="olymp-comments-post-icon">
+            <use xlink:href="assets/svg-icons/sprites/icons.svg#olymp-comments-post-icon"></use>
+          </svg>
+        </a>
+
+        <a href="#" class="btn btn-control">
+          <svg class="olymp-share-icon">
+            <use xlink:href="assets/svg-icons/sprites/icons.svg#olymp-share-icon"></use>
+          </svg>
+        </a>
+
+      </div>
+
+    </article>
+
+    <!-- Comments -->
+
+    <app-comment-list [comments]="p.comments"></app-comment-list>
+
+    <!-- ... end Comments -->
+
+    <!-- Comment Form  -->
+    <app-comment-form [userId]="p?.userId"
+                      [postId]="p?.postId"
+                      [avatar]="user?.avatar"
+    ></app-comment-form>
+    <!-- ... end Comment Form  -->
+  </div>
+</div>

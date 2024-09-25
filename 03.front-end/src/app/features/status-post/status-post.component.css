@@ -1,0 +1,18 @@
+.post__author {
+  margin-bottom: 20px;
+}
+
+.post__author img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  overflow: hidden;
+  display: block;
+  margin-right: 12px;
+}
+
+.post__author .more {
+  float: right;
+  font-size: 16px;
+  margin-right: 20px;
+}

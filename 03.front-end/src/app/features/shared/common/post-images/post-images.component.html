@@ -1,0 +1,36 @@
+<div *ngIf="images.length == 1">
+  <div class="post-thumb" *ngFor="let i of images">
+    <img src="{{i.url}}" alt="photo">
+  </div>
+</div>
+<div *ngIf="images.length == 2">
+  <div class="post-block-photo js-zoom-gallery">
+    <div *ngFor="let i of images">
+      <a href="{{i.url}}" class="col col-12"><img src="{{i.url}}" alt="photo"></a>
+    </div>
+  </div>
+</div>
+<div *ngIf="images.length >= 3">
+  <ngx-masonry [options]="masonryOptions" class="post-block-photo js-zoom-gallery" [ordered]="true">
+    <div ngxMasonryItem class="masonry-item" *ngFor="let i of images.slice(0,3)">
+      <a href="{{i.url}}">
+        <img src="{{i.url}}" alt="photo">
+      </a>
+    </div>
+    <div ngxMasonryItem class="masonry-item" *ngFor="let i of images.slice(3,4)">
+      <a href="{{i.url}}" class="more-photos">
+        <img src="{{i.url}}" alt="photo">
+        <span class="h2">+{{ images.length - 3 }}</span>
+      </a>
+    </div>
+    <div *ngFor="let i of images.slice(4)" hidden>
+      <a href="{{i.url}}">
+        <img src="{{i.url}}" alt="photo">
+      </a>
+    </div>
+  </ngx-masonry>
+</div>
+
+
+
+
