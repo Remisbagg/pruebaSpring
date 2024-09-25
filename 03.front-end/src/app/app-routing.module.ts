@@ -10,12 +10,9 @@ import {PersonalPostsComponent} from "./features/personal-posts/personal-posts.c
 import {SearchResultComponent} from "./features/search-result/search-result.component";
 
 const routes: Routes = [
-  //{path: 'newsfeed', component: NewsfeedComponent, canActivate: [AuthorizeGuard]},
-  {path: 'newsfeed', component: NewsfeedComponent},
-  //{path: 'personal-post', component: PersonalPostsComponent, canActivate: [AuthorizeGuard]},
-  {path: 'personal-post', component: PersonalPostsComponent},
-  //{path: 'search-result', component: SearchResultComponent, canActivate: [AuthorizeGuard]},
-  {path: 'search-result', component: SearchResultComponent},
+  {path: 'newsfeed', component: NewsfeedComponent, canActivate: [AuthorizeGuard]},
+  {path: 'personal-post', component: PersonalPostsComponent, canActivate: [AuthorizeGuard]},
+  {path: 'search-result', component: SearchResultComponent, canActivate: [AuthorizeGuard]},
   {path: '', redirectTo: 'newsfeed', pathMatch: 'full'},
   {path: 'home', redirectTo: 'newsfeed', pathMatch: 'full'},
   {path: 'forgot-password', component: ForgotPasswordComponent},
